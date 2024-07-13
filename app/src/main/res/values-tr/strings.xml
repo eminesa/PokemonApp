@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">PokemonApp</string>
+    <string name="unexpectedError">Beklenmedik bir hata oluştu</string>
+    <string name="could_not_reach_server_error">Lütfen internet bağlantınızı kontrol edin.</string>
+    <string name="please_try_again">Lüften tekrar deneyin.</string>
+    <string name="global_information">İnternet bağlantısı şu anda yükleyemiyor</string>
+    <string name="there_is_no_pokemon">Şuan hiç bir pokemon yok</string>
+
+</resources>

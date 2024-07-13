@@ -1,0 +1,10 @@
+<resources>
+
+    <string name="app_name">PokemonApp</string>
+    <string name="unexpectedError">An unexpected error occurred</string>
+    <string name="could_not_reach_server_error">Couldn\'t reach server. Check your internet connection.</string>
+    <string name="please_try_again">Please try again.</string>
+    <string name="global_information">The internet connection is currently unable to load</string>
+    <string name="there_is_no_pokemon">There is not any pokemon</string>
+
+</resources>

@@ -1,0 +1,29 @@
+<resources >
+    <!-- Base application theme. -->
+    <style name="Theme.PokemonApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_200</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_200</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="TextDarkGray15sp" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/dark_gray</item>
+        <item name="android:textSize">15sp</item>
+        <item name="fontFamily">@font/roboto_regular</item>
+    </style>
+
+    <style name="TextMediumBlackAndWhite14sp" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textColor">@color/ecru_white</item>
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/roboto_medium</item>
+    </style>
+
+</resources>
