@@ -23,8 +23,7 @@ class PokemonAdapter(
 
                 val pokemonUrl = pokemon.url?.split("/")?.filter { it.isNotEmpty() }
                 val pokemonId = pokemonUrl?.last()
-                val spriteUrl =
-                    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/$pokemonId.png"
+                val spriteUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/$pokemonId.png"
 
                 imageViewPokemon.load(spriteUrl) {
                     placeholder(R.drawable.pokemon)

@@ -6,5 +6,6 @@
     <string name="please_try_again">Please try again.</string>
     <string name="global_information">The internet connection is currently unable to load</string>
     <string name="there_is_no_pokemon">There is not any pokemon</string>
+    <string name="type">Type</string>
 
 </resources>

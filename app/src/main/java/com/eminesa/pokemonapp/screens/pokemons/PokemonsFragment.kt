@@ -176,7 +176,9 @@ class PokemonsFragment : Fragment() {
     override fun onPause() {
         // detail sayfasından geri geldginde en son kaldıgı yerden listeyi gosterir
         val layoutManager = binding?.recyclerViewPokemon?.layoutManager as StaggeredGridLayoutManager
-        //viewModel.recyclerViewPosition = layoutManager.findLastVisibleItemPositions()
+        val lastVisibleItemPositions = layoutManager.findLastVisibleItemPositions(null)
+        val lastVisibleItemPosition = lastVisibleItemPositions.maxOrNull() ?: 0
+        viewModel.recyclerViewPosition = lastVisibleItemPosition
         super.onPause()
     }
 

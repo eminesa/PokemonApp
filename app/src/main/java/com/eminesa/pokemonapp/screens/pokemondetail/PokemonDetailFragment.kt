@@ -1,30 +1,30 @@
 package com.eminesa.pokemonapp.screens.pokemondetail
 
+import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import coil.load
-import coil.util.CoilUtils
 import androidx.navigation.fragment.findNavController
 import coil.ImageLoader
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
-import com.eminesa.pokemonapp.R
 import com.eminesa.pokemonapp.databinding.FragmentPokemonDetailBinding
 import com.eminesa.pokemonapp.extentions.showToastMessage
 import com.eminesa.pokemonapp.model.PokemonDetail
 import com.eminesa.pokemonapp.util.UiText
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlin.random.Random
 
 @AndroidEntryPoint
 class PokemonDetailFragment : Fragment() {
@@ -40,6 +40,9 @@ class PokemonDetailFragment : Fragment() {
         if (binding == null)
             binding = FragmentPokemonDetailBinding.inflate(inflater)
 
+        binding?.buttonBack?.setOnClickListener {
+            findNavController().popBackStack()
+        }
         return binding?.root
     }
 
@@ -63,9 +66,6 @@ class PokemonDetailFragment : Fragment() {
             is PokemonDetailViewState.Success -> handleSuccess(state.data)
             is PokemonDetailViewState.SuccessWithEmptyData -> Unit
             is PokemonDetailViewState.Error -> handleError(state.error)
-            else -> {
-
-            }
         }
     }
 
@@ -92,8 +92,33 @@ class PokemonDetailFragment : Fragment() {
                 .target(imageViewPokemon)
                 .build()
 
+
             imageLoader.enqueue(request)
             textViewPokemonName.text = pokemon.name
+
+            val gameIndices = pokemon.gameIndices
+
+
+            // İlk oyun indeksinin rengine göre arka planı ayarlayalım
+            val index = Random.nextInt(gameIndices?.size ?: 0)
+            val versionName = gameIndices?.get(index)?.version?.name
+            val color = viewModel.setColor(versionName)
+
+            frameLayout.setBackgroundColor(color)
+
+            typeLayout.setBackgroundColor(color)
+
+            for (type in pokemon.types!!) {
+                val textView = TextView(requireContext())
+                textView.text = type.type?.name
+                textView.textSize = 25f
+                textView.gravity = Gravity.CENTER_HORIZONTAL
+                textView.setTextColor(Color.WHITE)
+                textView.setPadding(16, 16, 16, 16)
+                textView.setBackgroundColor(Color.TRANSPARENT)
+                typeLayout.addView(textView)
+            }
+
         }
 
     }

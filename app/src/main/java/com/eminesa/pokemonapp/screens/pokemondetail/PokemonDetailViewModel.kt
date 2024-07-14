@@ -1,5 +1,6 @@
 package com.eminesa.pokemonapp.screens.pokemondetail
 
+import android.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.eminesa.pokemonapp.network.PokemonDetailRepositoryImpl
@@ -41,5 +42,29 @@ class PokemonDetailViewModel @Inject constructor(private val repository: Pokemon
             }.launchIn(this)
         }
     }
+
+    fun setColor (versionName: String?): Int {
+            val color = when (versionName) {
+                "red" -> (Color.RED)
+                "blue" -> (Color.BLUE)
+                "yellow" -> (Color.YELLOW)
+                "gold" -> (Color.parseColor("#FFD700"))
+                "silver" -> (Color.parseColor("#C0C0C0"))
+                "crystal" -> (Color.parseColor("#00FFFF"))
+                "ruby" -> (Color.parseColor("#E0115F"))
+                "sapphire" -> (Color.parseColor("#0F52BA"))
+                "emerald" -> (Color.parseColor("#50C878"))
+                "firered" -> (Color.parseColor("#FF4500"))
+                "leafgreen" -> (Color.parseColor("#00FF00"))
+                "diamond" -> (Color.parseColor("#B9F2FF"))
+                "pearl" -> (Color.parseColor("#EAE0C8"))
+                "platinum" -> (Color.parseColor("#E5E4E2"))
+                "heartgold" -> (Color.parseColor("#D4AF37"))
+                "soulsilver" -> (Color.parseColor("#C0C0C0"))
+                else -> (Color.GREEN)
+            }
+            return color
+        }
+
 
 }

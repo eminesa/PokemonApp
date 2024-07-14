@@ -1,4 +1,12 @@
  
+## Pokes
+
+This repository contains the  *Pokémons* app that uses [PokeApi](https://pokeapi.co/).
+
 ## Description
 
-Develop a Pokédex application that shows all available *Pokémons*. 
+This App contains 2 page
+
+Pokémon Species List Page
+Pokémon Details Page
+
