@@ -16,11 +16,11 @@ class PokemonDetailRepositoryImpl @Inject constructor(
     private val apiService: ApiService
 ) : PokemonRepository {
 
-    override suspend fun getPokemonDetail(name: String?): Flow<Resource<PokemonDetail>> = flow {
+    override suspend fun getPokemonDetail(id: String?): Flow<Resource<PokemonDetail>> = flow {
         try {
             emit(Resource.Loading())
 
-            val response = apiService.getPokemonDetail(name = name)
+            val response = apiService.getPokemonDetail(id = id)
 
             emit(Resource.Success(data = response))
         } catch (e: HttpException) {

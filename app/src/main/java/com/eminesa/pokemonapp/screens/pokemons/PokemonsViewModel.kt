@@ -24,7 +24,7 @@ class PokemonsViewModel @Inject constructor(val repository: PokemonRepositoryImp
     var hashMapPokemon: HashMap<String, MutableLiveData<PagingData<PokemonList.Pokemon>>?> =
         HashMap()
 
-    var pokemonList: LiveData<PagingData<PokemonList.Pokemon>>? =
+    private var pokemonList: LiveData<PagingData<PokemonList.Pokemon>>? =
         null
 
     val pokemonListWithLiveData: LiveData<PagingData<PokemonList.Pokemon>>?

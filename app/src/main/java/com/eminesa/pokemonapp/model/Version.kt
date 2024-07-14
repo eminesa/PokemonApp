@@ -1,8 +1,9 @@
 package com.eminesa.pokemonapp.model
 
+
 import com.google.gson.annotations.SerializedName
 
-data class Form(
+data class Version(
     @SerializedName("name")
     val name: String?,
     @SerializedName("url")

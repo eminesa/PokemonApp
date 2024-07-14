@@ -20,9 +20,9 @@ class PokemonDetailViewModel @Inject constructor(private val repository: Pokemon
         _state.value = PokemonDetailViewState.Loading(isLoading)
     }
 
-    fun getPokemonDetail(name: String?) {
+    fun getPokemonDetail(id: String?) {
         viewModelScope.launch {
-            repository.getPokemonDetail(name).onEach { result ->
+            repository.getPokemonDetail(id).onEach { result ->
                 when (result) {
                     is Resource.Error -> {
                         setLoading(false)

@@ -14,6 +14,7 @@ import coil.load
 import coil.util.CoilUtils
 import androidx.navigation.fragment.findNavController
 import coil.ImageLoader
+import coil.decode.SvgDecoder
 import coil.request.ImageRequest
 import com.eminesa.pokemonapp.R
 import com.eminesa.pokemonapp.databinding.FragmentPokemonDetailBinding
@@ -46,7 +47,7 @@ class PokemonDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupObservers()
-        viewModel.getPokemonDetail(arguments?.getString("name", "bulbasaur"))
+        viewModel.getPokemonDetail(arguments?.getString("id", "1"))
 
     }
 
@@ -62,6 +63,9 @@ class PokemonDetailFragment : Fragment() {
             is PokemonDetailViewState.Success -> handleSuccess(state.data)
             is PokemonDetailViewState.SuccessWithEmptyData -> Unit
             is PokemonDetailViewState.Error -> handleError(state.error)
+            else -> {
+
+            }
         }
     }
 
@@ -73,26 +77,22 @@ class PokemonDetailFragment : Fragment() {
 
     private fun handleSuccess(pokemon: PokemonDetail) {
 
-        val pokemonId = pokemon.id
-        val spriteUrl =
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/$pokemonId.png"
-
-        val imageLoader = ImageLoader.Builder(requireContext())
-            .crossfade(true)
-            .allowRgb565(true)
-            .dispatcher(Dispatchers.IO)
-            .error(R.drawable.pokemon)
-            .build()
+        val imageUrl = pokemon.sprites?.other?.dreamWorld?.frontDefault ?: ""
 
         binding?.apply {
+
+            val imageLoader = ImageLoader.Builder(requireContext())
+                .components {
+                    add(SvgDecoder.Factory())
+                }
+                .build()
+
             val request = ImageRequest.Builder(requireContext())
-                .data(spriteUrl)
-                .placeholderMemoryCacheKey(CoilUtils.metadata(imageViewPokemon)?.memoryCacheKey)
+                .data(imageUrl)
                 .target(imageViewPokemon)
                 .build()
 
             imageLoader.enqueue(request)
-
             textViewPokemonName.text = pokemon.name
         }
 

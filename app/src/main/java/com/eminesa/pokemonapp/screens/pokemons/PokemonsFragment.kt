@@ -1,23 +1,21 @@
 package com.eminesa.pokemonapp.screens.pokemons
 
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.eminesa.pokemonapp.R
-import com.eminesa.pokemonapp.databinding.FragmentPokemonsBinding
 import com.eminesa.pokemonapp.adapter.PokemonAdapter
 import com.eminesa.pokemonapp.adapter.PokemonLoadStateAdapter
+import com.eminesa.pokemonapp.databinding.FragmentPokemonsBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChangedBy
@@ -112,19 +110,19 @@ class PokemonsFragment : Fragment() {
         recyclerViewPokemon.apply {
             setHasFixedSize(true)
             setItemViewCacheSize(0)
+            layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
-            val dividerItemDecoration =
-                DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
-            dividerItemDecoration.setDrawable(
-                ColorDrawable(
-                    ContextCompat.getColor(
-                        context,
-                        R.color.dark_gray
-                    )
-                )
-            )
+            /* val dividerItemDecoration = DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
+             dividerItemDecoration.setDrawable(
+                 ColorDrawable(
+                     ContextCompat.getColor(
+                         context,
+                         R.color.dark_gray
+                     )
+                 )
+             )
 
-            addItemDecoration(dividerItemDecoration)
+             addItemDecoration(dividerItemDecoration) */
             adapter = pokemonAdapter?.withLoadStateHeaderAndFooter(
                 header = PokemonLoadStateAdapter(pokemonAdapter),
                 footer = PokemonLoadStateAdapter(pokemonAdapter)
@@ -166,19 +164,19 @@ class PokemonsFragment : Fragment() {
 
     private fun iniPokemonAdapter() {
         pokemonAdapter = PokemonAdapter(
-            onItemViewListener = { view, item, position ->
+            onItemViewListener = { id, item, position ->
 
                 findNavController().navigate(
                     R.id.action_pokemonsFragment_to_pokemonDetailFragment,
-                    bundleOf("name" to item.name)
+                    bundleOf("id" to id )
                 )
             })
     }
 
     override fun onPause() {
         // detail sayfasından geri geldginde en son kaldıgı yerden listeyi gosterir
-        val layoutManager = binding?.recyclerViewPokemon?.layoutManager as LinearLayoutManager
-        viewModel.recyclerViewPosition = layoutManager.findLastVisibleItemPosition()
+        val layoutManager = binding?.recyclerViewPokemon?.layoutManager as StaggeredGridLayoutManager
+        //viewModel.recyclerViewPosition = layoutManager.findLastVisibleItemPositions()
         super.onPause()
     }
 

@@ -51,8 +51,8 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideOkHttpClientBuilder(): OkHttpClient.Builder = OkHttpClient.Builder()
-        .readTimeout(20, TimeUnit.SECONDS)
-        .connectTimeout(20, TimeUnit.SECONDS)
+        .readTimeout(60, TimeUnit.SECONDS)
+        .connectTimeout(60, TimeUnit.SECONDS)
 
     @Provides
     @Singleton

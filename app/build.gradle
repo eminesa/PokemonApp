@@ -18,7 +18,7 @@ ext {
     chuckerVersion = '3.5.2'
     okHttpVersion = '5.0.0-alpha.2'
     loggingInterceptor = '3.1.0'
-    coilVerison = '1.4.0'
+    coilVerison = '2.1.0'
     leakCanaryVersion = '2.10'
     fragmentVersion = "1.5.7"
     navigationVersion = "2.5.3"
@@ -118,8 +118,11 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$versionNavigation"
     implementation "androidx.navigation:navigation-ui-ktx:$versionNavigation"
 
+    // implementation("io.coil-kt:coil-svg:2.6.0")
     //Coil for set image
     implementation "io.coil-kt:coil:$coilVerison"
+    implementation("io.coil-kt:coil-svg:$coilVerison")
+
 
     // For memory leak in debug control
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"

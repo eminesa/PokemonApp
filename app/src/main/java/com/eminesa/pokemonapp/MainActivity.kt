@@ -16,10 +16,10 @@ class MainActivity : AppCompatActivity() {
 
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mainBinding?.root)
-        setNavigation()
+       // setNavigation()
     }
 
-    private fun setNavigation() {
+    private fun setNavigation() { // xmlde navGraph kullanirsan navigationi gelip burada tekrar tanimklamana gerek kalmiyor
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.navFragment) as NavHostFragment
         val navController = navHostFragment.navController
         navController.navigate(R.id.pokemonsFragment)

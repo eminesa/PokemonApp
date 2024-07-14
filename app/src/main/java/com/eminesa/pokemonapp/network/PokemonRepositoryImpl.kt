@@ -8,5 +8,5 @@ class PokemonRepositoryImpl @Inject constructor(
     private val api: ApiService,
 ) {
     suspend fun getPokemonList(offsetSize: Int?, limitSize: Int?): PokemonList =
-        api.getPokemons(offset = offsetSize, limit = limitSize)
+        api.getPokemonList(offset = offsetSize, limit = limitSize)
 }

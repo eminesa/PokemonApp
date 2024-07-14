@@ -10,9 +10,9 @@ interface ApiService {
 
     //get pokemon name as a list
     @GET("pokemon-species/")
-    suspend fun getPokemons(@Query("offset") offset: Int?, @Query("limit") limit: Int?): PokemonList
+    suspend fun getPokemonList(@Query("offset") offset: Int?, @Query("limit") limit: Int?): PokemonList
 
     //get pokemon detail by pokemon name
-    @GET("pokemon-species/{name}")
-    suspend fun getPokemonDetail(@Path("name") name: String?): PokemonDetail
+    @GET("pokemon/{id}")
+    suspend fun getPokemonDetail(@Path("id") id: String?): PokemonDetail
 }

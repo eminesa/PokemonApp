@@ -6,11 +6,13 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import com.eminesa.pokemonapp.R
 import com.eminesa.pokemonapp.databinding.ItemViewPokemonBinding
 import com.eminesa.pokemonapp.model.PokemonList
 
 class PokemonAdapter(
-    val onItemViewListener: ((view: View, item: PokemonList.Pokemon, position: Int) -> Unit),
+    val onItemViewListener: ((id: String? , item: PokemonList.Pokemon, position: Int) -> Unit),
 ) : PagingDataAdapter<PokemonList.Pokemon, PokemonAdapter.PokemonViewHolder>(PokemonDiffUtil) {
 
     inner class PokemonViewHolder(private var itemBinding: ItemViewPokemonBinding) :
@@ -18,9 +20,22 @@ class PokemonAdapter(
         fun bind(pokemon: PokemonList.Pokemon) {
 
             itemBinding.apply {
+
+                val pokemonUrl = pokemon.url?.split("/")?.filter { it.isNotEmpty() }
+                val pokemonId = pokemonUrl?.last()
+                val spriteUrl =
+                    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/$pokemonId.png"
+
+                imageViewPokemon.load(spriteUrl) {
+                    placeholder(R.drawable.pokemon)
+                    error(R.drawable.pokemon)
+                }
+
                 textViewPokemon.text = pokemon.name
+
+                itemView.setOnClickListener { onItemViewListener(pokemonId, pokemon, bindingAdapterPosition) }
+
             }
-            itemView.setOnClickListener { onItemViewListener(it, pokemon, bindingAdapterPosition) }
         }
     }
 
