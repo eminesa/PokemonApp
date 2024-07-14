@@ -29,7 +29,7 @@ import kotlin.random.Random
 @AndroidEntryPoint
 class PokemonDetailFragment : Fragment() {
 
-    var binding: FragmentPokemonDetailBinding? = null
+    private var binding: FragmentPokemonDetailBinding? = null
     private val viewModel: PokemonDetailViewModel by viewModels()
 
     override fun onCreateView(
@@ -92,12 +92,10 @@ class PokemonDetailFragment : Fragment() {
                 .target(imageViewPokemon)
                 .build()
 
-
             imageLoader.enqueue(request)
             textViewPokemonName.text = pokemon.name
 
             val gameIndices = pokemon.gameIndices
-
 
             // İlk oyun indeksinin rengine göre arka planı ayarlayalım
             val index = Random.nextInt(gameIndices?.size ?: 0)
@@ -107,17 +105,43 @@ class PokemonDetailFragment : Fragment() {
             frameLayout.setBackgroundColor(color)
 
             typeLayout.setBackgroundColor(color)
+            typeLayoutCard.setBackgroundColor(color)
+
+            abilityLayoutCard.setBackgroundColor(color)
+
+            val window = requireActivity().window
+            window.statusBarColor = color
 
             for (type in pokemon.types!!) {
                 val textView = TextView(requireContext())
                 textView.text = type.type?.name
-                textView.textSize = 25f
+                textView.textSize = 18f
                 textView.gravity = Gravity.CENTER_HORIZONTAL
                 textView.setTextColor(Color.WHITE)
                 textView.setPadding(16, 16, 16, 16)
                 textView.setBackgroundColor(Color.TRANSPARENT)
+
+                // Drawable ikonunu eklemek
+                /*  val drawable = ContextCompat.getDrawable(requireContext(), R.drawable.ic_back)
+                  drawable?.setBounds(0, 0, drawable.intrinsicWidth, drawable.intrinsicHeight)
+                  textView.setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null) */
+
                 typeLayout.addView(textView)
             }
+
+            for (ability in pokemon.abilities!!) {
+                val textView = TextView(requireContext())
+                textView.text = ability.ability?.name
+                textView.textSize = 18f
+                textView.gravity = Gravity.CENTER_HORIZONTAL
+                textView.setTextColor(Color.WHITE)
+                textView.setPadding(16, 16, 16, 16)
+                textView.setBackgroundColor(Color.TRANSPARENT)
+                layoutAbility.addView(textView)
+            }
+
+            cardViewType.isVisible =true
+            cardViewAbility.isVisible =true
 
         }
 

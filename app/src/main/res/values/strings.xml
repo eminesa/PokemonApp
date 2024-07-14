@@ -7,5 +7,8 @@
     <string name="global_information">The internet connection is currently unable to load</string>
     <string name="there_is_no_pokemon">There is not any pokemon</string>
     <string name="type">Type</string>
+    <string name="pokeball">Pokemon Ball</string>
+    <string name="back_button">Back Button</string>
+    <string name="ability">Ability</string>
 
 </resources>

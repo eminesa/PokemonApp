@@ -7,6 +7,9 @@
     <string name="please_try_again">Lüften tekrar deneyin.</string>
     <string name="global_information">İnternet bağlantısı şu anda yükleyemiyor</string>
     <string name="there_is_no_pokemon">Şuan hiç bir pokemon yok</string>
-    <string name="type">Tipi</string>
+    <string name="type">Tip</string>
+    <string name="pokeball">Pokemon Topu</string>
+    <string name="back_button">Geri Buttonu</string>
+    <string name="ability">Beceri</string>
 
 </resources>

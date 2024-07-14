@@ -30,6 +30,8 @@ class PokemonAdapter(
                     error(R.drawable.pokemon)
                 }
 
+                textVewPokeBall.text = "No: $pokemonId"
+
                 textViewPokemon.text = pokemon.name
 
                 itemView.setOnClickListener { onItemViewListener(pokemonId, pokemon, bindingAdapterPosition) }

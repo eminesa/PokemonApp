@@ -15,31 +15,54 @@
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="10dp">
 
+            <ImageView
+                android:id="@+id/imageView_pokeBall"
+                android:layout_width="30dp"
+                android:layout_height="32dp"
+                android:contentDescription="@string/pokeball"
+                android:src="@drawable/ic_pokeball" />
+
+            <TextView
+                android:id="@+id/textVew_pokeBall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/roboto_medium"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@id/imageView_pokeBall"
+                app:layout_constraintStart_toEndOf="@id/imageView_pokeBall"
+                app:layout_constraintTop_toTopOf="@id/imageView_pokeBall" />
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageView_pokemon"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_gravity="center"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textVew_pokeBall"
                 android:scaleType="fitCenter"
                 tools:src="@drawable/pokemon" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/textView_pokemon"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:gravity="center"
+                android:fontFamily="@font/roboto_medium"
+                android:textSize="18sp"
+                android:textAllCaps="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@id/imageView_pokemon"
                 tools:text="Name of Poke" />
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
 
