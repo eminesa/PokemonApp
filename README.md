@@ -1,10 +1,13 @@
- 
 ## Pokes
 
 This repository contains the  *Pokémons* app that uses [PokeApi](https://pokeapi.co/).
 
 ## Screen Shoots
-
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/f5d59b3f-39da-4a79-9426-3821d50b7438" alt="pokelist" width="306" />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://github.com/user-attachments/assets/97c73b77-235f-4dc7-aa5d-a731473aa8de" alt="pokedetay" width="306" />
+</p>
  
 ## Tech Stack ⚙️
 
