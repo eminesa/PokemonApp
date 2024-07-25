@@ -1,4 +1,4 @@
-## Pokes
+## PokemonApp
 
 This repository contains the  *Pokémons* app that uses [PokeApi](https://pokeapi.co/).
 
